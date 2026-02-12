@@ -51,12 +51,12 @@ namespace PeterHan.PLib.OptionsFilt {
 						title = LookInStrings(spec.Title);
 						tooltip = LookInStrings(spec.Tooltip);
 					} else if (attrib is RequireDLCAttribute requireDLC &&
-					           DlcManager.IsContentActive(requireDLC.DlcID) !=
-					            requireDLC.Required) {
+							   DlcManager.IsContentSubscribed(requireDLC.DlcID) !=
+								requireDLC.Required) {
 						shouldSkip = true;
 						break;
 					} else if (attrib is RequireModAttribute requireMod &&
-					           !Util.IsModEnabled(requireMod.ModStaticID)) {
+							   !Util.IsModEnabled(requireMod.ModStaticID)) {
 						shouldSkip = true;
 						break;
 					}

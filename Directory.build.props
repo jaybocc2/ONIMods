@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <!-- Define the GameFolder here to share it with all projects in subdirectories -->
+    <ONIInstallPath Condition=" '$(OS)' == 'Windows_NT' ">$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Steam App 457140@InstallLocation)</ONIInstallPath>
+    <GameFolder Condition=" '$(GameFolder)' == '' and '$(ONIInstallPath)' != '' and Exists('$(ONIInstallPath)\OxygenNotIncluded_Data\Managed') ">$(ONIInstallPath)\OxygenNotIncluded_Data\Managed</GameFolder>
+    <GameFolder Condition=" '$(GameFolder)' == '' and Exists('$(HOME)/.steam/steam/steamapps/common/OxygenNotIncluded/OxygenNotIncluded_Data/Managed') ">$(HOME)/.steam/steam/steamapps/common/OxygenNotIncluded/OxygenNotIncluded_Data/Managed</GameFolder>
+    <GameFolder Condition=" '$(GameFolder)' == '' and Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/OxygenNotIncluded/OxygenNotIncluded.app/Contents/Resources/Data/Managed') ">$(HOME)/Library/Application Support/Steam/steamapps/common/OxygenNotIncluded/OxygenNotIncluded.app/Contents/Resources/Data/Managed</GameFolder>
+    <GameFolder Condition=" '$(GameFolder)' == '' ">C:\Program Files (x86)\Steam\steamapps\common\OxygenNotIncluded\OxygenNotIncluded_Data\Managed</GameFolder>
+  </PropertyGroup>
+</Project>

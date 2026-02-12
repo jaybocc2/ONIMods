@@ -32,8 +32,8 @@ public class Toggles {
                                                              "Will not be included", (long)0, null),
                                             new SettingLevel("Enabled", "Enabled", "Will be included",
                                                              (long)0, null),
-                                            "Disabled", "Disabled", (long)-1, (long)-1, false,
-                                            changeToCustom, "", "");
+                                            "Disabled", "Disabled", (long)-1, false,
+                                            changeToCustom, null, "");
         toggleMap.Add(pType, toggle);
         cgs.AddQualitySettingConfig(toggle);
     }

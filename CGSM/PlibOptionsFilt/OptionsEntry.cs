@@ -221,7 +221,7 @@ namespace PeterHan.PLib.OptionsFilt {
 					// Do not create an entry if the DLC does not match or the
 					// required mod is not enabled
 					if (attributes[i] is RequireDLCAttribute requireDLC && DlcManager.
-							IsContentActive(requireDLC.DlcID) != requireDLC.Required) {
+							IsContentSubscribed(requireDLC.DlcID) != requireDLC.Required) {
 						dlcMatch = false;
 						break;
 					} else if (attributes[i] is RequireModAttribute requireMod &&

@@ -1,0 +1,6 @@
+.vs
+*/.vs
+*/Player.log
+*/bin
+*/deps
+*/obj

@@ -6,6 +6,9 @@
     <LangVersion>10.0</LangVersion>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<ONIModName>ShowUndiscovered</ONIModName>
+		<ONIModDll>$(ONIModName).dll</ONIModDll>
+		<ONIModMergedDll>$(ONIModName)Merged.dll</ONIModMergedDll>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -46,28 +49,28 @@
   <!-- Dependencies -->
   <ItemGroup>
     <Reference Include="0Harmony">
-      <HintPath>deps\0Harmony.dll</HintPath>
+      <HintPath>$(GameFolder)\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>deps\Assembly-CSharp.dll</HintPath>
+      <HintPath>$(GameFolder)\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>deps\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>$(GameFolder)\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>deps\UnityEngine.dll</HintPath>
+      <HintPath>$(GameFolder)\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>deps\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>$(GameFolder)\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>deps\UnityEngine.UI.dll</HintPath>
+      <HintPath>$(GameFolder)\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>deps\Unity.TextMeshPro.dll</HintPath>
+      <HintPath>$(GameFolder)\Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextRenderingModule">
-      <HintPath>deps\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>$(GameFolder)\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -79,5 +82,11 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="PLib" Version="4.12.0" />
   </ItemGroup>
+	<Target Name="Repack" AfterTargets="Build">
+		<Exec
+			 Command="$(ILRepack) /ndebug /out:$(ONIModMergedDll) $(ONIModDll) PLib.dll Newtonsoft.Json.dll /targetplatform:v4"
+			 WorkingDirectory="$(OutDir)"
+		/>
+	</Target>
 
 </Project>
