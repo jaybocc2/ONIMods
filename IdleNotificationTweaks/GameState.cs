@@ -273,7 +273,7 @@ public class GameState
         } else if (ship.IsTravellingAndFueled()) {
             // rocket is moving
             return true;
-        } else if (isPoiHarvesting) {
+        } else if (ship.HasAnyTags(new Tag[] { GameTags.RocketCollectingResources, GameTags.RocketDrilling })) {
             // rocket is mining
             return true;
         } // else rocket is idle in space
